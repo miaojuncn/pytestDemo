@@ -1,8 +1,10 @@
-import pytest
 import os
+
 import allure
+import pytest
+
 from api.user import user
-from common.mysql_operate import db
+from common.mysql_operation import db
 from common.read_data import data
 from common.logger import logger
 

@@ -1,5 +1,6 @@
 import pytest
 import allure
+
 from operation.user import register_user
 from common.logger import logger
 
@@ -17,7 +18,7 @@ def step_2(username, password, telephone, sex, address):
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.epic("针对业务场景的测试")
 @allure.feature("场景：用户注册-重复注册")
-class TestRepeatReg():
+class TestRepeatReg:
 
     @allure.story("用例--注册/重复注册--预期成功")
     @allure.description("该用例是针对 注册-重复注册 场景的测试")

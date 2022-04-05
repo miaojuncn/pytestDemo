@@ -1,5 +1,7 @@
-import pymysql
 import os
+
+import pymysql
+
 from common.read_data import data
 from common.logger import logger
 
@@ -16,13 +18,15 @@ DB_CONF = {
 }
 
 
-class MysqlDb():
+class MysqlDb:
 
-    def __init__(self, db_conf=DB_CONF):
+    def __init__(self, db_conf=None):
         # 通过字典拆包传递配置信息，建立数据库连接
-        self.conn = pymysql.connect(**db_conf, autocommit=True)
+        if db_conf is None:
+            db_conf = DB_CONF
+        self.conn = pymysql.connect(**db_conf, autocommit=True, cursorclass=pymysql.cursors.DictCursor)
         # 通过 cursor() 创建游标对象，并让查询结果以字典格式输出
-        self.cur = self.conn.cursor(cursor=pymysql.cursors.DictCursor)
+        self.cur = self.conn.cursor()
 
     def __del__(self):  # 对象资源被释放时触发，在对象即将被删除时的最后操作
         # 关闭游标
@@ -37,8 +41,7 @@ class MysqlDb():
         # 使用 execute() 执行sql
         self.cur.execute(sql)
         # 使用 fetchall() 获取查询结果
-        data = self.cur.fetchall()
-        return data
+        return self.cur.fetchall()
 
     def execute_db(self, sql):
         """更新/新增/删除"""
@@ -50,7 +53,7 @@ class MysqlDb():
             # 提交事务
             self.conn.commit()
         except Exception as e:
-            logger.info("操作MySQL出现错误，错误原因：{}".format(e))
+            logger.info("操作 MySQL 出现错误，错误原因：{}".format(e))
             # 回滚所有更改
             self.conn.rollback()
 

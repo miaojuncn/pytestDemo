@@ -1,5 +1,6 @@
 import pytest
 import allure
+
 from operation.user import register_user, login_user, get_one_user_info, update_user
 from common.logger import logger
 
@@ -27,7 +28,7 @@ def step_4(id):
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.epic("针对业务场景的测试")
 @allure.feature("场景：用户注册-用户登录-修改用户")
-class TestRegLogUpdate():
+class TestRegLogUpdate:
 
     @allure.story("用例--注册/登录/修改--预期成功")
     @allure.description("该用例是针对 注册-登录-修改 场景的测试")

@@ -1,5 +1,6 @@
 import pytest
 import allure
+
 from operation.user import update_user
 from testcases.conftest import api_data
 from common.logger import logger
@@ -18,7 +19,7 @@ def step_login(admin_user, token):
 @allure.severity(allure.severity_level.NORMAL)
 @allure.epic("针对单个接口的测试")
 @allure.feature("用户修改模块")
-class TestUpdate():
+class TestUpdate:
     """修改用户"""
 
     @allure.story("用例--修改用户信息")

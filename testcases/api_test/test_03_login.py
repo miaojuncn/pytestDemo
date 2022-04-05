@@ -1,5 +1,6 @@
 import pytest
 import allure
+
 from operation.user import login_user
 from testcases.conftest import api_data
 from common.logger import logger
@@ -13,7 +14,7 @@ def step_1(username):
 @allure.severity(allure.severity_level.NORMAL)
 @allure.epic("针对单个接口的测试")
 @allure.feature("用户登录模块")
-class TestUserLogin():
+class TestUserLogin:
 
     @allure.story("用例--登录用户")
     @allure.description("该用例是针对获取用户登录接口的测试")

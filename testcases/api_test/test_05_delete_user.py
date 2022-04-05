@@ -18,7 +18,7 @@ def step_login(admin_user, token):
 @allure.severity(allure.severity_level.NORMAL)
 @allure.epic("针对单个接口的测试")
 @allure.feature("用户删除模块")
-class TestUserDelete():
+class TestUserDelete:
     """删除用户"""
 
     @allure.story("用例--删除用户信息")

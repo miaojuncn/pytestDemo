@@ -1,5 +1,6 @@
 import pytest
 import allure
+
 from operation.user import register_user, login_user, delete_user
 from common.logger import logger
 
@@ -22,7 +23,7 @@ def step_3(username):
 @allure.severity(allure.severity_level.MINOR)
 @allure.epic("针对业务场景的测试")
 @allure.feature("场景：用户注册-用户登录-删除用户")
-class TestRegLogDelete():
+class TestRegLogDelete:
 
     @allure.story("用例--注册/登录/删除--预期成功")
     @allure.description("该用例是针对 注册-登录-删除 场景的测试")
@@ -55,7 +56,6 @@ class TestRegLogDelete():
         assert result.response.json().get("code") == except_code
         assert except_msg in result.msg
         logger.info("*************** 结束执行用例 ***************")
-
 
     """
     # 标记 strict=True 输出 allure 报告会报错，暂不处理

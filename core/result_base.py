@@ -1,3 +1,2 @@
-
-class ResultBase():
+class ResultBase:
     pass

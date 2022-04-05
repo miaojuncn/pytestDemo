@@ -1,4 +1,5 @@
 import os
+
 from core.rest_client import RestClient
 from common.read_data import data
 
@@ -8,9 +9,8 @@ api_root_url = data.load_ini(data_file_path)["host"]["api_root_url"]
 
 
 class User(RestClient):
-
-    def __init__(self, api_root_url, **kwargs):
-        super(User, self).__init__(api_root_url, **kwargs)
+    def __init__(self, base_url):
+        super(User, self).__init__(base_url)
 
     def list_all_users(self, **kwargs):
         return self.get("/users", **kwargs)

@@ -1,5 +1,6 @@
 import pytest
 import allure
+
 from operation.user import register_user
 from testcases.conftest import api_data
 from common.logger import logger
